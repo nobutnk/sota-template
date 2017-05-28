@@ -33,7 +33,7 @@ public class SotaMain {
         String tag = config.getProperty(SOTA_LOG_PROP_KEY);
         
         try {
-            AbstractShutdownHook main = new SimpleShutdownHook(config, args);
+            AbstractExecutor main = new SimpleExecutor(config, args);
             main.execute();
         } catch (Exception e) {
             CRobotUtil.Log(tag, e.getMessage());

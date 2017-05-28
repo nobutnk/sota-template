@@ -9,9 +9,9 @@ import java.util.Properties;
  * @author nobutnk
  *
  */
-public class SimpleShutdownHook extends AbstractShutdownHook {
+public class SimpleExecutor extends AbstractExecutor {
 
-    public SimpleShutdownHook(Properties config, String[] args) {
+    public SimpleExecutor(Properties config, String[] args) {
         super(config, args);
     }
 

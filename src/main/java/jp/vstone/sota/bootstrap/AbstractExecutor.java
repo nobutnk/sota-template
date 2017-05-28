@@ -9,7 +9,7 @@ import java.util.Properties;
  * @author nobutnk
  *
  */
-public abstract class AbstractShutdownHook implements ShutdownHook {
+public abstract class AbstractExecutor implements Executor {
     
     private final String[] args;
     
@@ -17,7 +17,7 @@ public abstract class AbstractShutdownHook implements ShutdownHook {
     
     protected final String tag;
     
-    public AbstractShutdownHook(Properties config, String[] args) {
+    public AbstractExecutor(Properties config, String[] args) {
         this.config = config;
         this.args = args;
         this.tag = config.getProperty("log.TAG");
