@@ -1,8 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
 <properties>
-  <comment>コメント</comment>
-  <entry key="piyo">ぴよ</entry>
-  <entry key="fuga">ふが</entry>
-  <entry key="hoge">ほげ</entry>
+  <comment>Sota application config file</comment>
+  <entry key="log.TAG">SotaApplication</entry>
+  <entry key="sota.service">hoge.hoge.HogeService</entry>
 </properties>

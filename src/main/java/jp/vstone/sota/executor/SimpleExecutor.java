@@ -1,9 +1,12 @@
 /**
  * 
  */
-package jp.vstone.sota.bootstrap;
+package jp.vstone.sota.executor;
 
-import java.util.Properties;
+import jp.vstone.sota.common.SotaConfig;
+import jp.vstone.sota.domain.service.SotaService;
+import jp.vstone.sota.exception.SotaException;
+import jp.vstone.sota.exception.SotaRuntimeException;
 
 /**
  * @author nobutnk
@@ -11,7 +14,7 @@ import java.util.Properties;
  */
 public class SimpleExecutor extends AbstractExecutor {
 
-    public SimpleExecutor(Properties config, String[] args) {
+    public SimpleExecutor(SotaConfig config, String[] args) {
         super(config, args);
     }
 
@@ -28,9 +31,28 @@ public class SimpleExecutor extends AbstractExecutor {
      * @see jp.vstone.sota.bootstrap.AbstractShutdownHook#doExecute()
      */
     @Override
-    public void doExecute() {
-        // TODO Auto-generated method stub
-
+    public void doExecute() throws SotaException{
+        String serviceClass = config.getString("sota.service");
+        SotaService sotaService = loadService(serviceClass);
+        
+        sotaService.execute();
+    }
+    
+    @SuppressWarnings("unchecked")
+    public SotaService loadService(String className) {
+        SotaService service = null;
+        try {
+            Class<SotaService> clazz = (Class<SotaService>) Class.forName(className);
+            service = clazz.newInstance();
+            
+            return service;
+        } catch (ClassNotFoundException e) {
+            throw new SotaRuntimeException(e);
+        } catch (InstantiationException e) {
+            throw new SotaRuntimeException(e);
+        } catch (IllegalAccessException e) {
+            throw new SotaRuntimeException(e);
+        }
     }
 
 }

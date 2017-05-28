@@ -1,9 +1,10 @@
 /**
  * 
  */
-package jp.vstone.sota.bootstrap;
+package jp.vstone.sota.executor;
 
-import java.util.Properties;
+import jp.vstone.sota.common.SotaConfig;
+import jp.vstone.sota.exception.SotaException;
 
 /**
  * @author nobutnk
@@ -13,20 +14,20 @@ public abstract class AbstractExecutor implements Executor {
     
     private final String[] args;
     
-    protected final Properties config;
+    protected final SotaConfig config;
     
     protected final String tag;
     
-    public AbstractExecutor(Properties config, String[] args) {
+    public AbstractExecutor(SotaConfig config, String[] args) {
         this.config = config;
         this.args = args;
-        this.tag = config.getProperty("log.TAG");
+        this.tag = config.getString("log.TAG");
     }
 
     /* (non-Javadoc)
      * @see com.blogspot.tanakanbb.process.ShutdownHook#execute()
      */
-    public void execute() {
+    public void execute() throws SotaException {
         Runtime.getRuntime().addShutdownHook(new Thread() {
             public void run() {
                 release();
@@ -38,12 +39,12 @@ public abstract class AbstractExecutor implements Executor {
     /**
      * 停止時の処理
      */
-    public abstract void release();
+    public abstract void release() ;
     
     /**
      * メインループ
      */
-    public abstract void doExecute();
+    public abstract void doExecute() throws SotaException;
 
     /**
      * @return the args

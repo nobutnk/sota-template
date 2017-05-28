@@ -1,7 +1,9 @@
 /**
  * 
  */
-package jp.vstone.sota.bootstrap;
+package jp.vstone.sota.executor;
+
+import jp.vstone.sota.exception.SotaException;
 
 /**
  * @author nobutnk
@@ -9,6 +11,6 @@ package jp.vstone.sota.bootstrap;
  */
 public interface Executor {
    
-   void execute();
+   void execute() throws SotaException;
 
 }

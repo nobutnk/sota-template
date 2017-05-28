@@ -3,14 +3,10 @@
  */
 package jp.vstone.sota.bootstrap;
 
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.IOException;
-import java.util.InvalidPropertiesFormatException;
-import java.util.Properties;
-
 import jp.vstone.RobotLib.CRobotUtil;
-import jp.vstone.sota.exception.SotaRuntimeException;
+import jp.vstone.sota.common.SotaConfig;
+import jp.vstone.sota.executor.Executor;
+import jp.vstone.sota.executor.SimpleExecutor;
 
 /**
  * @author nobutnk
@@ -29,37 +25,16 @@ public class SotaMain {
         
         
         String configXml = args[0];
-        Properties config = loadConfig(configXml);
-        String tag = config.getProperty(SOTA_LOG_PROP_KEY);
+        SotaConfig config = SotaConfig.loadConfig(configXml);
+        String tag = config.getString(SOTA_LOG_PROP_KEY);
         
         try {
-            AbstractExecutor main = new SimpleExecutor(config, args);
+            Executor main = new SimpleExecutor(config, args);
             main.execute();
         } catch (Exception e) {
             CRobotUtil.Log(tag, e.getMessage());
             e.printStackTrace();
         }
     }
-    
-    /**
-     * プロパティファイル読み込み
-     * @param path ファイルパス
-     * @return Properties
-     */
-    public static Properties loadConfig(String path) {
-        Properties prop = new Properties();
-        try {
-            prop.loadFromXML(new FileInputStream(path));
-        } catch (InvalidPropertiesFormatException e) {
-            throw new SotaRuntimeException(e);
-        } catch (FileNotFoundException e) {
-            throw new SotaRuntimeException(e);
-        } catch (IOException e) {
-            throw new SotaRuntimeException(e);
-        }
-        
-        return prop;
-    }
-    
 
 }
