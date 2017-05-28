@@ -16,6 +16,41 @@
 
   <dependencies>
     <dependency>
+      <groupId>SRClientHelper</groupId>
+      <artifactId>SRClientHelper</artifactId>
+      <version>2015.07.08_115818</version>
+      <scope>system</scope>
+      <systemPath>${basedir}/sotalib/SRClientHelper-2015.07.08_115818.jar</systemPath>
+    </dependency>
+    <dependency>
+      <groupId>sotalib</groupId>
+      <artifactId>sotalib</artifactId>
+      <version>1.0.0</version>
+      <scope>system</scope>
+      <systemPath>${basedir}/sotalib/sotalib.jar</systemPath>
+    </dependency>
+    <dependency>
+      <groupId>org.opencv</groupId>
+      <artifactId>opencv</artifactId>
+      <version>3.1.0</version>
+      <scope>system</scope>
+      <systemPath>${basedir}/sotalib/opencv-310.jar</systemPath>
+    </dependency>
+    
+    <dependency>
+      <groupId>com.google.zxing</groupId>  
+      <artifactId>javase</artifactId>
+      <version>2.2</version>
+    </dependency>
+    <!-- https://mvnrepository.com/artifact/net.java.dev.jna/jna -->
+    <dependency>
+      <groupId>net.java.dev.jna</groupId>
+      <artifactId>jna</artifactId>
+      <version>4.1.0</version>
+    </dependency>
+
+    
+    <dependency>
       <groupId>junit</groupId>
       <artifactId>junit</artifactId>
       <version>4.11</version>
