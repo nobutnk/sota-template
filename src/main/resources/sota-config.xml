@@ -4,4 +4,13 @@
   <comment>Sota application config file</comment>
   <entry key="log.TAG">SotaApplication</entry>
   <entry key="sota.service">hoge.hoge.HogeService</entry>
+  
+  <entry key="http.useProxy">false</entry>
+  <entry key="http.proxy.host">192.168.1.100</entry>
+  <entry key="http.proxy.port">1234</entry>
+  
+  <entry key="http.proxy.userAuthentication">true</entry>
+  <entry key="http.proxy.username">username</entry>
+  <entry key="http.proxy.password">password</entry>
+  
 </properties>

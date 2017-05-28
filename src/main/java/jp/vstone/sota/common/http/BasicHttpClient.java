@@ -57,36 +57,7 @@ public class BasicHttpClient implements HttpClient {
      * @see jp.vstone.sota.common.HttpClient#get(java.lang.String)
      */
     public String get(String uri) throws SotaException {
-        StringBuilder responseBody = new StringBuilder();
-        try {
-            URL url = new URL(uri);
-
-            HttpURLConnection connection = null;
-
-            try {
-                connection = (HttpURLConnection) url.openConnection();
-                connection.setRequestMethod("GET");
-
-                if (connection.getResponseCode() == HttpURLConnection.HTTP_OK) {
-                    try (InputStreamReader isr = new InputStreamReader(connection.getInputStream(),
-                            StandardCharsets.UTF_8); BufferedReader reader = new BufferedReader(isr)) {
-                        int r;
-                        while ((r = reader.read()) != -1) {
-                            char ch = (char) r;
-                            responseBody.append(ch);
-                        }
-                    }
-                }
-            } finally {
-                if (connection != null) {
-                    connection.disconnect();
-                }
-            }
-        } catch (IOException e) {
-            throw new SotaException(e);
-        }
-
-        return responseBody.toString();
+        return get(null, uri);
     }
 
     /*
@@ -96,6 +67,10 @@ public class BasicHttpClient implements HttpClient {
      * java.util.Map)
      */
     public String post(String uri, Map<String, String> params, String charsetName) throws SotaException {
+        return post(null, uri, params, charsetName);
+    }
+
+    public String post(Map<String, String> headers, String uri, Map<String, String> params, String charsetName) throws SotaException {
         StringBuilder responseBody = new StringBuilder();
         try {
             URL url = new URL(uri);
@@ -106,6 +81,11 @@ public class BasicHttpClient implements HttpClient {
                 connection = (HttpURLConnection) url.openConnection();
                 connection.setDoOutput(true);
                 connection.setRequestMethod("POST");
+                if (headers != null) {
+                    for (Map.Entry<String, String> entry : headers.entrySet()) {
+                        connection.setRequestProperty(entry.getKey(), entry.getValue());
+                    }
+                }
                 
                 OutputStream os = connection.getOutputStream();//POST用のOutputStreamを取得
                 
@@ -136,14 +116,42 @@ public class BasicHttpClient implements HttpClient {
         return responseBody.toString();
     }
 
-    public String get(Map<String, String> headers, String uri) {
-        // TODO Auto-generated method stub
-        return null;
-    }
+    public String get(Map<String, String> headers, String uri) throws SotaException {
+        StringBuilder responseBody = new StringBuilder();
+        try {
+            URL url = new URL(uri);
 
-    public String post(Map<String, String> headers, String uri, Map<String, String> params, String charsetName) {
-        // TODO Auto-generated method stub
-        return null;
+            HttpURLConnection connection = null;
+
+            try {
+                connection = (HttpURLConnection) url.openConnection();
+                connection.setRequestMethod("GET");
+                if (headers != null) {
+                    for (Map.Entry<String, String> entry : headers.entrySet()) {
+                        connection.setRequestProperty(entry.getKey(), entry.getValue());
+                    }
+                }
+
+                if (connection.getResponseCode() == HttpURLConnection.HTTP_OK) {
+                    try (InputStreamReader isr = new InputStreamReader(connection.getInputStream(),
+                            StandardCharsets.UTF_8); BufferedReader reader = new BufferedReader(isr)) {
+                        int r;
+                        while ((r = reader.read()) != -1) {
+                            char ch = (char) r;
+                            responseBody.append(ch);
+                        }
+                    }
+                }
+            } finally {
+                if (connection != null) {
+                    connection.disconnect();
+                }
+            }
+        } catch (IOException e) {
+            throw new SotaException(e);
+        }
+
+        return responseBody.toString();
     }
     
     public String createPostParam(Map<String, String> params, String charsetName) {
