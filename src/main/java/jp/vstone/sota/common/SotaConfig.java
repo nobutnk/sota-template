@@ -31,6 +31,10 @@ public class SotaConfig {
         return Integer.parseInt(properties.getProperty(key));
     }
     
+    public boolean getBoolean(String key) {
+        return Boolean.parseBoolean(properties.getProperty(key));
+    }
+    
     /**
      * プロパティファイル読み込み
      * @param path ファイルパス
