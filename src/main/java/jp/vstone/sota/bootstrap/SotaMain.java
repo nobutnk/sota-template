@@ -17,15 +17,15 @@ public class SotaMain {
      * ログに使うTAGのプロパティキー名
      */
     private static final String SOTA_LOG_PROP_KEY = "log.TAG";
+    
+    public static String configXmlPath;
 
     /**
      * @param args
      */
     public static void main(String[] args) {
-        
-        
-        String configXml = args[0];
-        SotaConfig config = SotaConfig.loadConfig(configXml);
+        configXmlPath = args[0];
+        SotaConfig config = SotaConfig.loadConfig(configXmlPath);
         String tag = config.getString(SOTA_LOG_PROP_KEY);
         
         try {

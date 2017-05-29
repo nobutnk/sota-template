@@ -19,5 +19,12 @@
     <bean id="recog" class="jp.vstone.sotatalk.SpeechRecog" >
         <constructor-arg index="0" ref="motion" />
     </bean>
+    
+    
+    <bean id="sotaConfig" class="jp.vstone.sota.common.SotaConfig">
+        <constructor-arg type="java.lang.String">
+            <util:constant static-field="jp.vstone.sota.bootstrap.SotaMain.configXmlPath"/>
+        </constructor-arg>
+    </bean>
 
 </beans>

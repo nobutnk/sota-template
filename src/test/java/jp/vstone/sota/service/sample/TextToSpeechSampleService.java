@@ -11,10 +11,6 @@ import jp.vstone.sotatalk.SpeechRecog;
 
 @Service
 public class TextToSpeechSampleService extends AbstractBeanSotaService {
-    
-    public TextToSpeechSampleService(CRobotMem mem, CSotaMotion motion, SpeechRecog recog) {
-        super(mem, motion, recog);
-    }
 
     static final String TAG = "SpeechRecSample";
 
@@ -25,7 +21,7 @@ public class TextToSpeechSampleService extends AbstractBeanSotaService {
         soundController.playFromFile("僕の名前はSotaです。", true);
         byte[] data = soundController.createWaveDataFromText("これから、よろしくね！");
         soundController.playFromBinary(data, true);
-
+        
         soundController.playFromText(
                 "僕の名前はSotaです。僕の名前はSotaです。僕の名前はSotaです。"
                 + "僕の名前はSotaです。僕の名前はSotaです。僕の名前はSotaです。"

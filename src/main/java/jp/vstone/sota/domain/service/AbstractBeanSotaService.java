@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 import jp.vstone.RobotLib.CRobotMem;
 import jp.vstone.RobotLib.CSotaMotion;
+import jp.vstone.sota.common.SotaConfig;
 import jp.vstone.sota.exception.SotaException;
 import jp.vstone.sotatalk.SpeechRecog;
 
@@ -24,6 +25,9 @@ public abstract class AbstractBeanSotaService implements SotaService {
     
     @Autowired
     protected SpeechRecog recog;
+    
+    @Autowired
+    protected SotaConfig sotaConfig;
     
     
     /**

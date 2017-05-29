@@ -17,10 +17,14 @@ import jp.vstone.sota.exception.SotaRuntimeException;
  */
 public class SotaConfig {
 
-    private final Properties properties;
+    private Properties properties;
     
     public SotaConfig(Properties properties) {
         this.properties = properties;
+    }
+    
+    public SotaConfig(String configXmlPath) {
+        loadConfig(configXmlPath);
     }
     
     public String getString(String key) {
