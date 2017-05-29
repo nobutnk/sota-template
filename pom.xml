@@ -51,6 +51,14 @@
       <artifactId>jna</artifactId>
       <version>4.1.0</version>
     </dependency>
+    <!-- https://mvnrepository.com/artifact/org.springframework/spring-core -->
+    <dependency>
+      <groupId>org.springframework</groupId>
+      <artifactId>spring-context</artifactId>
+      <version>4.3.0.RELEASE</version>
+    </dependency>
+
+
 
 
     <dependency>
@@ -79,7 +87,8 @@
               <classpathPrefix>lib</classpathPrefix>
             </manifest>
             <manifestEntries>
-              <Class-Path>/home/root/sotalib.jar /home/root/SRClientHelper.jar</Class-Path>
+              <Class-Path>/home/root/sotalib.jar
+                /home/root/SRClientHelper.jar</Class-Path>
             </manifestEntries>
           </archive>
         </configuration>
