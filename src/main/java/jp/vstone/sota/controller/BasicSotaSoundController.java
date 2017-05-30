@@ -15,10 +15,6 @@ import jp.vstone.sotatalk.TextToSpeechSota;
  */
 @Component
 public class BasicSotaSoundController implements SotaSoundController {
-
-    public BasicSotaSoundController() {
-        
-    }
     
     public CPlayWave playFromText(String text, boolean wait) {
         return CPlayWave.PlayWave(TextToSpeechSota.getTTSFile(text), wait);
