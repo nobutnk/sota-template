@@ -2,7 +2,7 @@ package jp.vstone.sotasample;
 
 import jp.vstone.RobotLib.CRobotMem;
 import jp.vstone.RobotLib.CSotaMotion;
-import jp.vstone.sota.controller.BasicSotaSoundController;
+import jp.vstone.sota.controller.MockSotaSoundController;
 import jp.vstone.sota.domain.service.AbstractSotaService;
 import jp.vstone.sota.exception.SotaException;
 import jp.vstone.sotatalk.SpeechRecog;
@@ -16,7 +16,7 @@ public class TextToSpeechSampleService extends AbstractSotaService {
 
     @Override
     public void doService() throws SotaException {
-        BasicSotaSoundController soundController = new BasicSotaSoundController();
+        MockSotaSoundController soundController = new MockSotaSoundController();
         soundController.playFromFile("やっほー", true);
         soundController.playFromFile("僕の名前はSotaです。", true);
         byte[] data = soundController.createWaveDataFromText("これから、よろしくね！");

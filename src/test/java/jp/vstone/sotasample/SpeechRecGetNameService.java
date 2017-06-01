@@ -3,7 +3,7 @@ package jp.vstone.sotasample;
 import jp.vstone.RobotLib.CRobotMem;
 import jp.vstone.RobotLib.CRobotUtil;
 import jp.vstone.RobotLib.CSotaMotion;
-import jp.vstone.sota.controller.BasicSotaSoundController;
+import jp.vstone.sota.controller.MockSotaSoundController;
 import jp.vstone.sota.domain.service.AbstractSotaService;
 import jp.vstone.sotatalk.SpeechRecog;
 
@@ -15,7 +15,7 @@ public class SpeechRecGetNameService extends AbstractSotaService {
     static final String TAG = "SpeechRecSample";
 
     public void doService() {
-        BasicSotaSoundController soundController= new BasicSotaSoundController();
+        MockSotaSoundController soundController= new MockSotaSoundController();
         soundController.playFromText("お名前はなんですか？", true);
 
         String name = recog.getName(15000, 3);

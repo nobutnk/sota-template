@@ -3,8 +3,6 @@
  */
 package jp.vstone.sota.controller;
 
-import org.springframework.stereotype.Component;
-
 import jp.vstone.RobotLib.CPlayWave;
 import jp.vstone.sota.exception.SotaException;
 import jp.vstone.sotatalk.TextToSpeechSota;
@@ -13,7 +11,6 @@ import jp.vstone.sotatalk.TextToSpeechSota;
  * @author nobutnk
  *
  */
-@Component
 public class BasicSotaSoundController implements SotaSoundController {
     
     public CPlayWave playFromText(String text, boolean wait) {
