@@ -1,5 +1,6 @@
 package jp.vstone.sota.sample.service;
 
+import java.util.NoSuchElementException;
 import java.util.Scanner;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,16 +24,14 @@ public class InputTextToSpeechSampleService extends AbstractBeanSotaService {
         soundController.playFromText("僕の名前はSotaです。", true);
         soundController.playFromText("これからよろしくね！", true);
 
+        Scanner scanner = new Scanner(System.in);
         for (int i = 0;;i++) {
-            Scanner scanner = new Scanner(System.in);
             System.out.print("[" + i + "] Input > ");
-         
-            String input = scanner.nextLine();
+            String input = scanner.next();
          
             System.out.println("[" + i + "] " + input);
             if (!"end".equals(input)) {
                 soundController.playFromText(input, true);
-                scanner.close();
             } else {
                 scanner.close();
                 break;
