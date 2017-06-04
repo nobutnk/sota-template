@@ -10,6 +10,7 @@ import org.springframework.stereotype.Component;
 import jp.vstone.RobotLib.CPlayWave;
 import jp.vstone.RobotLib.CRobotUtil;
 import jp.vstone.sota.exception.SotaException;
+import jp.vstone.sota.module.SotaSoundController;
 
 /**
  * @author nobutnk

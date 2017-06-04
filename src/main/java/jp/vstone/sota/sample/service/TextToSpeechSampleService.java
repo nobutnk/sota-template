@@ -4,11 +4,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
-import jp.vstone.sota.controller.SotaSoundController;
 import jp.vstone.sota.domain.service.AbstractBeanSotaService;
 import jp.vstone.sota.domain.service.api.simpleapi.SimpleApiResult;
 import jp.vstone.sota.domain.service.api.simpleapi.Station;
 import jp.vstone.sota.exception.SotaException;
+import jp.vstone.sota.module.SotaSoundController;
 
 @Service
 public class TextToSpeechSampleService extends AbstractBeanSotaService {

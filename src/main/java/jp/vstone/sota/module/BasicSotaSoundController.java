@@ -1,7 +1,7 @@
 /**
  * 
  */
-package jp.vstone.sota.controller;
+package jp.vstone.sota.module;
 
 import jp.vstone.RobotLib.CPlayWave;
 import jp.vstone.sota.exception.SotaException;

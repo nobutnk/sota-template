@@ -6,9 +6,9 @@ import java.util.Scanner;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import jp.vstone.sota.controller.SotaSoundController;
 import jp.vstone.sota.domain.service.AbstractBeanSotaService;
 import jp.vstone.sota.exception.SotaException;
+import jp.vstone.sota.module.SotaSoundController;
 
 @Service
 public class InputTextToSpeechSampleService extends AbstractBeanSotaService {
