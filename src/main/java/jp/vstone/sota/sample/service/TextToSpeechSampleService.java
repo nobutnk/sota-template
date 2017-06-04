@@ -5,16 +5,17 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
 import jp.vstone.sota.domain.service.AbstractBeanSotaService;
+import jp.vstone.sota.domain.service.ServiceInput;
 import jp.vstone.sota.domain.service.api.simpleapi.SimpleApiResult;
 import jp.vstone.sota.domain.service.api.simpleapi.Station;
 import jp.vstone.sota.exception.SotaException;
-import jp.vstone.sota.module.SotaSoundController;
+import jp.vstone.sota.module.SotaSoundModule;
 
 @Service
 public class TextToSpeechSampleService extends AbstractBeanSotaService {
 
     @Autowired
-    protected SotaSoundController soundController;
+    protected SotaSoundModule soundModule;
     
     @Autowired
     private RestTemplate restTemplate;
@@ -22,25 +23,15 @@ public class TextToSpeechSampleService extends AbstractBeanSotaService {
     static final String TAG = "SpeechRecSample";
 
     @Override
-    public void doService() throws SotaException {
-        soundController.playFromText("やっほー", true);
-        soundController.playFromText("僕の名前はSotaです。", true);
-        byte[] data = soundController.createWaveDataFromText("これから、よろしくね！");
-        soundController.playFromBinary(data, true);
+    public void doService(ServiceInput serviceInput) throws SotaException {
+        soundModule.playFromText("やっほー", true);
+        soundModule.playFromText("僕の名前はSotaです。", true);
+        byte[] data = soundModule.createWaveDataFromText("これから、よろしくね！");
+        soundModule.playFromBinary(data, true);
         
-        soundController.playFromText(
+        soundModule.playFromText(
                 "僕の名前はSotaです",
                 true);
-        
-        soundController.playFromText("最寄駅を探すね", true);
-        
-        String url = "http://map.simpleapi.net/stationapi?x=139.8025&y=35.6657";
-        SimpleApiResult result = restTemplate.getForObject(url, SimpleApiResult.class);
-        
-        for (Station s : result.getStations()) {
-            System.out.println(s.getName());
-            soundController.playFromText(s.getName(), true);
-        }
         
     }
 }

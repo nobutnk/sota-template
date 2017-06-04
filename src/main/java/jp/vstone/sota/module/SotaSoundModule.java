@@ -10,7 +10,7 @@ import jp.vstone.sota.exception.SotaException;
  * @author nobutnk
  *
  */
-public interface SotaSoundController {
+public interface SotaSoundModule {
 
     CPlayWave playFromText(String text, boolean wait);
     

@@ -32,7 +32,7 @@
         </constructor-arg>
     </bean>
     
-    <bean id="soundController" class="jp.vstone.sota.controller.BasicSotaSoundController" />
+    <bean id="soundModule" class="jp.vstone.sota.module.BasicSotaSoundModule" />
     
     <bean id="clientHttpRequestFactory"
         class="org.springframework.http.client.SimpleClientHttpRequestFactory">

@@ -11,5 +11,5 @@ import jp.vstone.sota.exception.SotaException;
  */
 public interface SotaService {
 
-    void execute() throws SotaException;
+    void execute(ServiceInput serviceInput) throws SotaException;
 }

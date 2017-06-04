@@ -30,7 +30,7 @@
         <constructor-arg type="java.lang.String" value="src/test/resources/sota-test-config.xml" />
     </bean>
     
-    <bean id="soundController" class="jp.vstone.sota.controller.MockSotaSoundController" />
+    <bean id="soundModule" class="jp.vstone.sota.module.MockSotaSoundModule" />
     
     <bean id="clientHttpRequestFactory"
         class="org.springframework.http.client.SimpleClientHttpRequestFactory">

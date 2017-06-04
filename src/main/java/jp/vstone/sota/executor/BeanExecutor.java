@@ -34,7 +34,7 @@ public class BeanExecutor extends AbstractExecutor {
         
         SotaService service = context.getBean(config.getString("serviceBeanName"), SotaService.class);
         
-        service.execute();
+        service.execute(null);
     }
 
 }

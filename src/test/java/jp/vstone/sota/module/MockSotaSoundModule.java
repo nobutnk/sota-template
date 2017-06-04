@@ -1,7 +1,7 @@
 /**
  * 
  */
-package jp.vstone.sota.controller;
+package jp.vstone.sota.module;
 
 import java.util.Objects;
 
@@ -10,16 +10,16 @@ import org.springframework.stereotype.Component;
 import jp.vstone.RobotLib.CPlayWave;
 import jp.vstone.RobotLib.CRobotUtil;
 import jp.vstone.sota.exception.SotaException;
-import jp.vstone.sota.module.SotaSoundController;
+import jp.vstone.sota.module.SotaSoundModule;
 
 /**
  * @author nobutnk
  *
  */
 @Component
-public class MockSotaSoundController implements SotaSoundController {
+public class MockSotaSoundModule implements SotaSoundModule {
     
-    private static final String TAG = MockSotaSoundController.class.getName();
+    private static final String TAG = MockSotaSoundModule.class.getName();
     
     public CPlayWave playFromText(String text, boolean wait) {
         CRobotUtil.Log(TAG, "mock#playFromText -> " + text);
