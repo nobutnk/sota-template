@@ -16,12 +16,9 @@ public abstract class AbstractExecutor implements Executor {
     
     protected final SotaConfig config;
     
-    protected final String tag;
-    
     public AbstractExecutor(SotaConfig config, String[] args) {
         this.config = config;
         this.args = args;
-        this.tag = config.getString("log.TAG");
     }
 
     /* (non-Javadoc)

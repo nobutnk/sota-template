@@ -51,15 +51,15 @@ public abstract class AbstractBeanSotaService implements SotaService {
     /* (non-Javadoc)
      * @see jp.vstone.sota.domain.service.SotaService#doService()
      */
-    public void execute() throws SotaException{
+    public void execute(ServiceInput serviceInput) throws SotaException{
         if(mem.Connect()){
             //Sota仕様にVSMDを初期化
             motion.InitRobot_Sota();
             
-            doService();
+            doService(serviceInput);
         }
     }
     
-    public abstract void doService() throws SotaException;
+    public abstract void doService(ServiceInput serviceInput) throws SotaException;
 
 }
