@@ -19,4 +19,8 @@ public interface SotaSoundModule {
     CPlayWave playFromBinary(byte[] data, boolean wait);
     
     byte[] createWaveDataFromText(String text) throws SotaException;
+    
+    String getKanaWordWithHighScore(int timeout, int retry) throws SotaException;
+    
+    String getWordWithHighScore(int timeout, int retry) throws SotaException;
 }
